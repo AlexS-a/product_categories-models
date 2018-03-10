@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    @products = Product.all
+    @products = Product.all.limit(5)
   end
 
   def create
