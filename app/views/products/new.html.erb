@@ -1,0 +1,8 @@
+<%= simple_form_for @product do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.simple_fields_for :product_categories do |t|%>
+    <%= t.input :categories, collection: @categories, as: :check_boxes %>
+  <% end %>
+<%= f.button :submit, class: "btn btn-success" %>
+<% end %>

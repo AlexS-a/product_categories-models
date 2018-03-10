@@ -1,9 +1,10 @@
 <h1>Category show page</h1>
 <%= @category.name %>
+<h2>products in this category</h2>
 <ul>
   <% @products.each do |product| %>
   <li>
-    <%= product.title %>
+    <%= link_to product.title, product_path(product) %>
     <%= product.description %>
   </li>
   <% end %>
