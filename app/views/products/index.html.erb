@@ -1,0 +1,9 @@
+<h1>Product index page</h1>
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= link_to product.title, product_path(product) %>
+      <%= product.created_at %>
+    </li>
+  <% end %>
+</ul>
