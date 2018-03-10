@@ -11,12 +11,12 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    @products = Product.order(created_at: :desc).limit(5)
+    @products = Product.order(created_at: :desc).limit(10)
   end
 
   def create
     @category = Category.new(category_params)
-    product_params[:products].each do |product|
+    product_params[:products_10_most_recently_created].each do |product|
       if product.length > 0
         @product = Product.find(product.to_i)
         @category.products << @product
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   private
 
   def product_params
-    params[:category].require(:product_categories).permit({products:[]})
+    params[:category].require(:product_categories).permit({products_10_most_recently_created:[]})
   end
 
   def category_params
